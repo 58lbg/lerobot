@@ -1,0 +1,40 @@
+#  single_task: "Pick up the bowl and put it in the corresponding place in the dishwasher."
+#  single_task: "Pick up the plate and put it in the corresponding place in the dishwasher."
+
+
+display_data: false
+robot:
+  type: so100_follower
+  port: /dev/ttyACM1
+  id: so100_right_follower
+  calibration_dir: /backup/lerobots/lbg/lerobot/.cache/calibration/so100
+  cameras:
+    top:
+      type: opencv
+      index_or_path: 1
+      width: 640
+      height: 480
+      fps: 30
+    bottom:
+      type: opencv
+      index_or_path: 3
+      width: 640
+      height: 480
+      fps: 30
+teleop:
+  type: so100_leader
+  port: /dev/ttyACM0
+  id: so100_right_leader
+  calibration_dir: /backup/lerobots/lbg/lerobot/.cache/calibration/so100
+dataset:
+  push_to_hub: false
+  episode_time_s: 300
+  reset_time_s: 4
+  repo_id: "lbg/cleartab"
+  num_episodes: 40
+  single_task: "将桌面物品分类"
+#  single_task: "将绿色的鸭子放进粉色的盘子"
+#  single_task: "Pick up the plate and put it in the corresponding place in the dishwasher."
+  root: "/home/it/Desktop/lerobot/video-record"
+
+resume: false

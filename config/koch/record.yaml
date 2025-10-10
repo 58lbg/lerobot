@@ -1,0 +1,16 @@
+robot:
+  type: "koch"
+control:
+  single_task: "lbgtask"
+  repo_id: "lbg/test"
+  type: "record"
+  fps: 30
+  warmup_time_s: 3
+  episode_time_s: 80
+  reset_time_s: 6
+  num_episodes: 100
+  push_to_hub: false
+  display_data: false
+  root: /home/it/Desktop/lerobot/cleartab_two_camera
+  resume: false
+ # gripper_open_degree: null

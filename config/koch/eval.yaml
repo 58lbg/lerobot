@@ -1,0 +1,19 @@
+robot:
+  type: "so100"
+control:
+  single_task: "lbgtask"
+  repo_id: "lbg/test"
+  type: "record"
+  fps: 30
+  warmup_time_s: 3
+  episode_time_s: 80
+  reset_time_s: 10
+  num_episodes: 10
+  push_to_hub: false
+  local_files_only: true
+  display_cameras: false
+  root: /media/oem-2/fat/lbg/test
+  policy:
+    path: outputs/train/2025-03-03-16-05/act_koch_test/checkpoints/last/pretrained_modelv
+  #  resume: true
+ # gripper_open_degree: null

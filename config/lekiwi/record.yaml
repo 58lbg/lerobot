@@ -1,0 +1,35 @@
+#  single_task: "Pick up the bowl and put it in the corresponding place in the dishwasher."
+#  single_task: "Pick up the plate and put it in the corresponding place in the dishwasher."
+
+
+display_data: true
+use_cv2: true
+teleop:
+  type: "lekiwi_leader"
+  id: lekiwi_leader
+  so100_leader_port: "/dev/ttyACM0"
+  so100_leader_id: "so100_right_leader"
+  so100_leader_calibration_dir: ".cache/calibration/lekiwi"
+  keyboard_teleop_id: "my_laptop_keyboard"
+  media: "joystick" # "keyboard" or "joystick"
+robot:
+  type: lekiwi_client
+  id: my_lekiwi
+  remote_ip: 10.253.35.128
+  calibration_dir: ".cache/calibration/lekiwi"
+dataset:
+  push_to_hub: false
+  episode_time_s: 500
+  reset_time_s: 8
+  repo_id: "lbg/cleartab"
+  num_episodes: 1
+  single_task: "move boll to anther dest"
+#  single_task: "Pick up the bowl and put it in the corresponding place in the dishwasher."
+#  single_task: "Pick up the plate and put it in the corresponding place in the dishwasher."
+#  root: "outputs/record/move_bowl_to_desk"
+  root: "outputs/record/test"
+#  root: "outputs/record/move_bowl_all_process"
+#  root: "outputs/record/test"
+
+# first time: false, later: true
+resume: true

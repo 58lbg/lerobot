@@ -1,0 +1,41 @@
+#  single_task: "Pick up the bowl and put it in the corresponding place in the dishwasher."
+#  single_task: "Pick up the plate and put it in the corresponding place in the dishwasher."
+
+
+display_data: false
+use_cv2: true
+robot:
+  type: so100_follower
+  port: /dev/ttyACM1
+  id: so100_right_follower
+  calibration_dir: /backup/lerobots/lbg/lerobot/.cache/calibration/so100
+  cameras:
+    top:
+      type: opencv
+      index_or_path: 1
+      width: 640
+      height: 480
+      fps: 30
+    bottom:
+      type: opencv
+      index_or_path: 3
+      width: 640
+      height: 480
+      fps: 30
+dataset:
+  push_to_hub: false
+  episode_time_s: 500
+  reset_time_s: 8
+  repo_id: "lbg/eval_cleartab"
+  num_episodes: 10
+  #single_task: ""lbgtask"
+  single_task: "将绿色的鸭子放进粉色的盘子"
+#  single_task: "Pick up the plate and put it in the corresponding place in the dishwasher."
+  root: "/home/it/Desktop/lerobot/eval_test"
+
+#policy:
+#  type: "smolvla"
+#  device: "cuda"
+#  path: "/backup/lerobots/lbg/lerobot/outputs/train/2025-06-11-22-36/act_koch_test/checkpoints/005000/pretrained_model"
+
+resume: false

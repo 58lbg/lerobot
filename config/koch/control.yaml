@@ -1,0 +1,8 @@
+robot:
+  type: koch
+control:
+  type: teleoperate
+  fps: 30
+  teleop_time_s: 120
+  display_cameras: false
+#  gripper_open_degree: null

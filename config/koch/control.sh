@@ -1,0 +1,1 @@
+ python ./lerobot/scripts/control_robot.py --config_path=./config/yaml/control.yaml

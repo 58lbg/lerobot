@@ -1,0 +1,44 @@
+{
+  "profile": {
+    "width": 1080,
+    "height": 1920,
+    "length": "{{#1745994824178.formatDuration#}}",
+    "inTime": "00:00:00.000",
+    "outTime": "{{#1745994824178.formatDuration#}}"
+  },
+  "materials": {
+    "videos": [
+      {
+        "resource": "https://lbgcrm015.58wos.com.cn/MnrjIhGfEMSp/video/dasao1.mov",
+        "inTime": "00:00:00.000",
+        "outTime": "00:00:09.080",
+        "length": "00:00:09.120",
+        "type": 0
+      },
+      {
+        "resource": "https://lbgcrm015.58wos.com.cn/MnrjIhGfEMSp/video/dasao1.mov",
+        "inTime": "00:00:00.000",
+        "outTime": "00:00:09.080",
+        "length": "00:00:09.120",
+        "type": 0
+      },
+      {
+        "resource": "https://lbgcrm015.58wos.com.cn/MnrjIhGfEMSp/video/dasao.mov",
+        "inTime": "00:00:00.000",
+        "outTime": "00:00:42.560",
+        "length": "00:00:42.600",
+        "type": 0
+      }
+    ],
+    "audio": {
+      "resource": "{{#1745994824178.audioUrl#}}",
+      "inTime": "00:00:00.000",
+      "outTime": "{{#1745994824178.formatDuration#}}",
+      "length": "{{#1745994824178.formatDuration#}}",
+      "type": 2
+    }
+  },
+  "subtitle": {
+    "srtUrl": "{{#1746002171376.srt_url#}}"
+  }
+}

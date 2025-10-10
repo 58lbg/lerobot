@@ -1,0 +1,26 @@
+[
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg",
+  "https://qcloud.dpfile.com/pc/e7D3x6FmIrlZDyyCwEuSncQdWyaKAg8RRXIA8rKux8o0Xq-Olg5wqPhbgOR3Xv4B.jpg"
+],
+
+{'event': 'message', 'task_id': '25144419-577e-4bd9-8a60-6e519bc76e42', 'id': 'e88f645e-4f22-429c-ba45-a50ea91f0aff', 'message_id': 'e88f645e-4f22-429c-ba45-a50ea91f0aff', 'conversation_id': 'd6cc74bd-f4ad-4971-b721-1bf05636b28b', 'mode': 'advanced-chat', 'answer': '{\n  "videoUrl": "https://aiplay017.58wos.com.cn/HioeDcBaHiJN/midjourneyout/1746008638883-output.mp4",\n  "coverUrl": "https://aiplay017.58wos.com.cn/HioeDcBaHiJN/midjourneyout/1746008640235-first_frame.jpg",\n  "duration": 60.84,\n  "fileSize": 31.36\n}', 'metadata': {'usage': {'prompt_tokens': 106, 'prompt_unit_price': '1', 'prompt_price_unit': '0.000001', 'prompt_price': '0.0001060', 'completion_tokens': 113, 'completion_unit_price': '2', 'completion_price_unit': '0.000001', 'completion_price': '0.0002260', 'total_tokens': 219, 'total_price': '0.0003320', 'currency': 'RMB', 'latency': 10.260733127011918
+}
+}, 'created_at': 1746008590
+}
+
+
+
+{
+"text_language": "all_zh",
+"name": "shangyaqi",
+"audio_format": "mp3/wav",
+"speed": "1.3",
+"text": "/"
+}

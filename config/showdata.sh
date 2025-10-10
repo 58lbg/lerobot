@@ -1,0 +1,1 @@
+ python ./lerobot/scripts/visualize_dataset_html.py --repo-id lbg/test --local-files-only 1

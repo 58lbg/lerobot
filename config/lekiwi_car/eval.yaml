@@ -1,0 +1,31 @@
+#  single_task: "Pick up the bowl and put it in the corresponding place in the dishwasher."
+#  single_task: "Pick up the plate and put it in the corresponding place in the dishwasher."
+
+
+display_data: false
+use_cv2: false
+disable_keyboard: true
+robot:
+  type: lekiwi_car_client
+  id: lbg_kiwi_car
+  remote_ip: 10.253.58.135
+  calibration_dir: ".cache/calibration/lekiwi_car"
+  auto_close_client_params_max: [  3.5821, -94.6555,  99.8258,  51.0186,  47.7411,   3.9544,   0.0000]
+  auto_close_client_params_min: [-11.8657, -95.3236,  99.6516,  49.8049,  46.6178,   2.3458,   0.0000]
+  start_auto_close_client_time : 5
+dataset:
+  push_to_hub: false
+  episode_time_s: 500
+  reset_time_s: 1
+  repo_id: "lbg/eval_cleartab"
+  num_episodes: 10
+  #single_task: ""lbgtask"
+  single_task: "move boll to anther dest"
+  root: "/home/it/Desktop/lerobot/eval_test"
+
+#policy:
+#  type: "smolvla"
+#  device: "cuda"
+#  path: "/backup/lerobots/lbg/lerobot/outputs/train/2025-06-11-22-36/act_koch_test/checkpoints/005000/pretrained_model"
+
+resume: false

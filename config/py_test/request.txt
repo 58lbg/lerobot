@@ -1,0 +1,100 @@
+/home/oem-2/miniconda3/envs/lerobot/bin/python -X pycache_prefix=/home/oem-2/.cache/JetBrains/PyCharmCE2024.3/cpython-cache /home/oem-2/桌面/pycharm-community-2024.3.2/plugins/python-ce/helpers/pydev/pydevd.py --module --multiprocess --qt-support=auto --client 127.0.0.1 --port 41951 --file lerobot.record --config_path=./config/lekiwi/record.yaml
+已连接到 pydev 调试器(内部版本号 243.23654.177)Traceback (most recent call last):
+  File "/home/oem-2/桌面/pycharm-community-2024.3.2/plugins/python-ce/helpers/pydev/pydevd.py", line 2270, in <module>
+    main()
+  File "/home/oem-2/桌面/pycharm-community-2024.3.2/plugins/python-ce/helpers/pydev/pydevd.py", line 2252, in main
+    globals = debugger.run(setup['file'], None, None, is_module)
+  File "/home/oem-2/桌面/pycharm-community-2024.3.2/plugins/python-ce/helpers/pydev/pydevd.py", line 1563, in run
+    return self._exec(is_module, entry_point_fn, module_name, file, globals, locals)
+  File "/home/oem-2/桌面/pycharm-community-2024.3.2/plugins/python-ce/helpers/pydev/pydevd.py", line 1587, in _exec
+    runpy._run_module_as_main(module_name, alter_argv=False)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/oem-2/文档/lerobot/lerobot/record.py", line 337, in <module>
+    record()
+  File "/home/oem-2/文档/lerobot/lerobot/configs/parser.py", line 225, in wrapper_inner
+    cfg = draccus.parse(config_class=argtype, config_path=config_path, args=cli_args)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/argparsing.py", line 204, in parse
+    parser = ArgumentParser(
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/argparsing.py", line 73, in __init__
+    self._set_dataclass(config_class)  # type: ignore
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/argparsing.py", line 87, in _set_dataclass
+    new_wrapper.register_actions(parser=self.parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 208, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 83, in register_actions
+    child.register_actions(parser)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 69, in register_actions
+    child.register_actions(parser)
+
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/functools.py", line 981, in __get__
+    val = self.func(instance)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 99, in _children
+    return {name: _wrap_child(child) for name, child in self.choice_type.get_known_choices().items()}
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 99, in <dictcomp>
+    return {name: _wrap_child(child) for name, child in self.choice_type.get_known_choices().items()}
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/choice_wrapper.py", line 97, in _wrap_child
+    return DataclassWrapper(child, parent=self.parent, _field=self._field, name=self.name)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 58, in __init__
+    child = _wrap_field(self, field, preferred_help=self.preferred_help, field_type=field_type)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/wrappers/dataclass_wrapper.py", line 166, in _wrap_field
+    if has_custom_decoder(field_type):
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/parsers/decoding.py", line 205, in has_custom_decoder
+    cached_func: RegistryFunc = decode.dispatch(cls)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/parsers/registry_utils.py", line 28, in dispatch
+    cls = canonicalize_union(cls)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/utils.py", line 398, in canonicalize_union
+    return Union[tuple(canonicalize_union(u) for u in t.__args__)]
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/utils.py", line 398, in <genexpr>
+    return Union[tuple(canonicalize_union(u) for u in t.__args__)]
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/site-packages/draccus/utils.py", line 400, in canonicalize_union
+    args = get_args(t)
+  File "/home/oem-2/miniconda3/envs/lerobot/lib/python3.10/typing.py", line 1942, in get_args
+    if isinstance(tp, (_GenericAlias, GenericAlias)):
+RecursionError: maximum recursion depth exceeded in __instancecheck__
+
+进程已结束，退出代码为 1

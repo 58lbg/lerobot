@@ -1,0 +1,28 @@
+raceback (most recent call last):
+  File "/backup/lerobots/lbg/lerobot-lekiwi/lerobot/scripts/train.py", line 288, in <module>
+    train()
+  File "/backup/lerobots/lbg/lerobot-lekiwi/lerobot/configs/parser.py", line 226, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+  File "/backup/lerobots/lbg/lerobot-lekiwi/lerobot/scripts/train.py", line 139, in train
+    policy = make_policy(
+  File "/backup/lerobots/lbg/lerobot-lekiwi/lerobot/common/policies/factory.py", line 157, in make_policy
+    policy = policy_cls(**kwargs)
+  File "/backup/lerobots/lbg/lerobot-lekiwi/lerobot/common/policies/act/modeling_act.py", line 74, in __init__
+    self.model = ACT(config)
+  File "/backup/lerobots/lbg/lerobot-lekiwi/lerobot/common/policies/act/modeling_act.py", line 335, in __init__
+    backbone_model = getattr(torchvision.models, config.vision_backbone)(
+  File "/home/it/anaconda3/envs/lerobot-lekiwi/lib/python3.10/site-packages/torchvision/models/_utils.py", line 142, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/it/anaconda3/envs/lerobot-lekiwi/lib/python3.10/site-packages/torchvision/models/_utils.py", line 228, in inner_wrapper
+    return builder(*args, **kwargs)
+  File "/home/it/anaconda3/envs/lerobot-lekiwi/lib/python3.10/site-packages/torchvision/models/resnet.py", line 705, in resnet18
+    return _resnet(BasicBlock, [2, 2, 2, 2], weights, progress, **kwargs)
+  File "/home/it/anaconda3/envs/lerobot-lekiwi/lib/python3.10/site-packages/torchvision/models/resnet.py", line 298, in _resnet
+    model = ResNet(block, layers, **kwargs)
+  File "/home/it/anaconda3/envs/lerobot-lekiwi/lib/python3.10/site-packages/torchvision/models/resnet.py", line 204, in __init__
+    self.layer4 = self._make_layer(block, 512, layers[3], stride=2, dilate=replace_stride_with_dilation[2])
+  File "/home/it/anaconda3/envs/lerobot-lekiwi/lib/python3.10/site-packages/torchvision/models/resnet.py", line 254, in _make_layer
+    block(
+  File "/home/it/anaconda3/envs/lerobot-lekiwi/lib/python3.10/site-packages/torchvision/models/resnet.py", line 79, in __init__
+    raise NotImplementedError("Dilation > 1 not supported in BasicBlock")
+NotImplementedError: Dilation > 1 not supported in BasicBlock
