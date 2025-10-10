@@ -88,7 +88,7 @@ class IOSPhone(BasePhone, Teleoperator):
         logger.info("Connecting to IPhone, make sure to open the HEBI Mobile I/O app.")
         lookup = hebi.Lookup()
         time.sleep(2.0)
-        group = lookup.get_group_from_macs("16:67:B0:E2:9B:E4", 5)
+        group = lookup.get_group_from_macs(["16:67:B0:E2:9B:E4"], 5)
         if group is None:
             raise RuntimeError("Mobile I/O not found — check name/family settings in the app.")
         self._group = group
