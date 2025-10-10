@@ -22,14 +22,14 @@
     <visual>
       <origin xyz="-0.00636471 -9.94414e-05 -0.0024" rpy="1.5708 -1.67685e-15 1.5708"/>
       <geometry>
-        <mesh filename="./assets/base_motor_holder_so101_v1.stl"/>
+        <mesh filename="assets/base_motor_holder_so101_v1.stl"/>
       </geometry>
       <material name="3d_printed"/>
     </visual>
     <collision>
       <origin xyz="-0.00636471 -9.94414e-05 -0.0024" rpy="1.5708 -1.67685e-15 1.5708"/>
       <geometry>
-        <mesh filename="./assets/base_motor_holder_so101_v1.stl"/>
+        <mesh filename="assets/base_motor_holder_so101_v1.stl"/>
       </geometry>
     </collision>
     <!-- Part base_so101_v2 -->
