@@ -45,7 +45,7 @@ robot_config = SO100FollowerConfig(
     use_degrees=True,
     calibration_dir=Path(".cache/calibration/phone_teleop")
 )
-teleop_config = PhoneConfig(phone_os=PhoneOS.IOS)  # or PhoneOS.ANDROID
+teleop_config = PhoneConfig(phone_os=PhoneOS.ANDROID)  # or PhoneOS.ANDROID
 
 # Initialize the robot and teleoperator
 robot = SO100Follower(robot_config)
