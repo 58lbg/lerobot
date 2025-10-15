@@ -103,7 +103,6 @@ while True:
     robot_obs = robot.get_observation()
 
     # Get teleop action
-    # 上下 ： 左右  前后：上下  左右：前后
     phone_obs = teleop_device.get_action()
 
     # Phone -> EE pose -> Joints transition
