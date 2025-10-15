@@ -201,7 +201,7 @@ class IOSPhone(BasePhone, Teleoperator):
         self._enabled = enable
 
         return {
-            "phone.pos": pos_cal,
+            "phone.pos": tem_pos,
             "phone.rot": rot_cal,
             "phone.raw_inputs": raw_inputs,
             "phone.enabled": self._enabled,
