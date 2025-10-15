@@ -16,6 +16,8 @@ import copy
 import time
 from pathlib import Path
 
+import numpy as np
+
 from lerobot.model.kinematics import RobotKinematics
 from lerobot.processor import RobotAction, RobotObservation, RobotProcessorPipeline
 from lerobot.processor.converters import (
@@ -115,7 +117,7 @@ while True:
     obs_scaled = copy.deepcopy(phone_obs)
 
     # 假设 phone_obs["phone"]["pos"] 是 numpy 数组或 list 放大100倍，方便在rerun上面观察
-    obs_scaled["phone.pos"] = obs_scaled["phone.pos"] * 100
+    obs_scaled["phone.pos"] = np.array(obs_scaled["phone.pos"]) * 100
 
     # Visualize
     log_rerun_data(observation=obs_scaled, action=joint_action)
