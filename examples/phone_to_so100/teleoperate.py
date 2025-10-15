@@ -1,5 +1,5 @@
 # !/usr/bin/env python
-
+import copy
 # Copyright 2025 The HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -111,7 +111,13 @@ while True:
     # Send action to robot
     _ = robot.send_action(joint_action)
 
+    # 深拷贝，防止改到原始 phone_obs
+    obs_scaled = copy.deepcopy(phone_obs)
+
+    # 假设 phone_obs["phone"]["pos"] 是 numpy 数组或 list
+    obs_scaled["phone"]["pos"] = obs_scaled["phone"]["pos"] * 100
+
     # Visualize
-    log_rerun_data(observation=phone_obs, action=joint_action)
+    log_rerun_data(observation=obs_scaled, action=joint_action)
 
     busy_wait(max(1.0 / FPS - (time.perf_counter() - t0), 0.0))
