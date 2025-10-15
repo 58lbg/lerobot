@@ -103,6 +103,7 @@ while True:
     robot_obs = robot.get_observation()
 
     # Get teleop action
+    # 上下 ： 左右  前后：上下  左右：前后
     phone_obs = teleop_device.get_action()
 
     # Phone -> EE pose -> Joints transition
@@ -114,8 +115,8 @@ while True:
     # 深拷贝，防止改到原始 phone_obs
     obs_scaled = copy.deepcopy(phone_obs)
 
-    # 假设 phone_obs["phone"]["pos"] 是 numpy 数组或 list
-    obs_scaled["phone"]["pos"] = obs_scaled["phone"]["pos"] * 100
+    # 假设 phone_obs["phone"]["pos"] 是 numpy 数组或 list 放大100倍，方便在rerun上面观察
+    obs_scaled["phone.pos"] = obs_scaled["phone.pos"] * 100
 
     # Visualize
     log_rerun_data(observation=obs_scaled, action=joint_action)
