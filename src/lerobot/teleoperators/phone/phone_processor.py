@@ -68,7 +68,7 @@ class MapPhoneActionToRobotAction(RobotActionProcessorStep):
 
         # Map certain inputs to certain actions
         if self.platform == PhoneOS.IOS:
-            gripper_vel = float(inputs.get("a3", 0.0))
+            gripper_vel = float(inputs.get("a6", 0.0))
         else:
             a = float(inputs.get("reservedButtonA", 0.0))
             b = float(inputs.get("reservedButtonB", 0.0))
