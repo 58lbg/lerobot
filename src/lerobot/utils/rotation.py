@@ -275,3 +275,14 @@ class Rotation:
         pitch = np.arcsin(2 * (qw * qy - qz * qx))
         yaw = np.arctan2(2 * (qw * qz + qx * qy), 1 - 2 * (qy * qy + qz * qz))
         return np.degrees([roll, pitch, yaw])  # 输出角度制
+
+    def fix_pitch_sign(self):
+        """
+        反转绕 Y 轴（pitch）方向的旋转符号。
+        即修正 pitch 角方向相反的问题。
+        """
+        qx, qy, qz, qw = self._quat
+        # 反转Y轴旋转方向：把y、z都取反可以抵消掉pitch反向
+        fixed_quat = np.array([qx, -qy, -qz, qw])
+        self._quat = fixed_quat / np.linalg.norm(fixed_quat)
+        return self

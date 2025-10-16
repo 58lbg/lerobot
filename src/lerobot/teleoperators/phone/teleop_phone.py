@@ -194,7 +194,7 @@ class IOSPhone(BasePhone, Teleoperator):
 
         # Apply calibration
         pos_cal = self._calib_rot_inv.apply(raw_position - self._calib_pos)
-        rot_cal = self._calib_rot_inv * raw_rotation
+        rot_cal = (self._calib_rot_inv * raw_rotation).fix_pitch_sign()
         # 上下 ： 左右  前后：上下  左右：前后
         tem_pos = [pos_cal[1], pos_cal[2], pos_cal[0]]
 
