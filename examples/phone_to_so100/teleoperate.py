@@ -121,6 +121,7 @@ while True:
     obs_scaled["phone.pos"] = np.array(obs_scaled["phone.pos"]) * 100
 
     obs_scaled["phone.rot.angle"] = obs_scaled["phone.rot"].as_euler()
+    obs_scaled["phone.gripper"] = obs_scaled["phone.raw_inputs"].get("a3", 0.0)
 
     # Visualize
     log_rerun_data(observation=obs_scaled, action=joint_action)
