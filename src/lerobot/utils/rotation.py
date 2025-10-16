@@ -268,3 +268,10 @@ class Rotation:
         )
 
         return Rotation(composed_quat)
+
+    def as_euler(self):
+        qx, qy, qz, qw = self._quat
+        roll = np.arctan2(2 * (qw * qx + qy * qz), 1 - 2 * (qx * qx + qy * qy))
+        pitch = np.arcsin(2 * (qw * qy - qz * qx))
+        yaw = np.arctan2(2 * (qw * qz + qx * qy), 1 - 2 * (qy * qy + qz * qz))
+        return np.degrees([roll, pitch, yaw])  # 输出角度制

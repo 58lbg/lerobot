@@ -39,37 +39,6 @@ from lerobot.teleoperators.phone.teleop_phone import Phone
 from lerobot.utils.robot_utils import busy_wait
 from lerobot.utils.visualization_utils import init_rerun, log_rerun_data
 
-def quaternion_to_euler(rot_cal):
-    """
-    将四元组 (w, x, y, z) 转换为欧拉角 (x, y, z)，单位为度
-    对应 roll(x)、pitch(y)、yaw(z)
-    """
-    w, x, y, z = rot_cal
-
-    # 计算 roll (x轴旋转)
-    sinr_cosp = 2 * (w * x + y * z)
-    cosr_cosp = 1 - 2 * (x * x + y * y)
-    roll = math.atan2(sinr_cosp, cosr_cosp)
-
-    # 计算 pitch (y轴旋转)
-    sinp = 2 * (w * y - z * x)
-    if abs(sinp) >= 1:
-        pitch = math.copysign(math.pi / 2, sinp)  # 处理超范围情况
-    else:
-        pitch = math.asin(sinp)
-
-    # 计算 yaw (z轴旋转)
-    siny_cosp = 2 * (w * z + x * y)
-    cosy_cosp = 1 - 2 * (y * y + z * z)
-    yaw = math.atan2(siny_cosp, cosy_cosp)
-
-    # 转换为角度
-    roll_deg = math.degrees(roll)
-    pitch_deg = math.degrees(pitch)
-    yaw_deg = math.degrees(yaw)
-
-    return roll_deg, pitch_deg, yaw_deg
-
 FPS = 30
 
 # Initialize the robot and teleoperator
@@ -151,10 +120,7 @@ while True:
     # 假设 phone_obs["phone"]["pos"] 是 numpy 数组或 list 放大100倍，方便在rerun上面观察
     obs_scaled["phone.pos"] = np.array(obs_scaled["phone.pos"]) * 100
 
-    x, y, z = quaternion_to_euler(obs_scaled["phone.rot"])
-    obs_scaled["phone.rot.x"] = x
-    obs_scaled["phone.rot.y"] = y
-    obs_scaled["phone.rot.z"] = z
+    obs_scaled["phone.rot.angle"] = obs_scaled["phone.rot"].as_euler()
 
     # Visualize
     log_rerun_data(observation=obs_scaled, action=joint_action)
