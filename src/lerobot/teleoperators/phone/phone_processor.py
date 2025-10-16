@@ -85,6 +85,7 @@ class MapPhoneActionToRobotAction(RobotActionProcessorStep):
         action["target_wy"] = rotvec[0] if enabled else 0.0
         action["target_wz"] = -rotvec[2] if enabled else 0.0
         action["gripper_vel"] = gripper_vel  # Still send gripper action when disabled
+        print(f"gripper_vel: {gripper_vel}")
         return action
 
     def transform_features(
