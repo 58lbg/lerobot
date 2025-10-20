@@ -308,6 +308,11 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
 
         # Compute inverse kinematics
         q_target = self.kinematics.inverse_kinematics(self.q_curr, t_des)
+
+        print("q_curr:", self.q_curr)
+        print("q_target:", q_target)
+        print("delta:", np.linalg.norm(q_target - self.q_curr))
+
         self.q_curr = q_target
 
         # TODO: This is sentitive to order of motor_names = q_target mapping
