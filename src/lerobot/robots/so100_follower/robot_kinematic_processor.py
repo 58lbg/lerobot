@@ -318,7 +318,7 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         joint2_delta = delta_vec[1]
         joint3_delta = delta_vec[2]
         print(f"关节2变化: {joint2_delta:+.4f}, 关节3变化: {joint3_delta:+.4f}, 总delta: {delta_norm:.4f}")
-        if delta_norm > 50 and self.last_q_target is not None:
+        if delta_norm > 30 and self.last_q_target is not None:
             q_target = self.last_q_target
 
         self.q_curr = q_target
