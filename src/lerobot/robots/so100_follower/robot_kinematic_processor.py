@@ -314,15 +314,27 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         delta_vec = q_target - self.q_curr
         delta_norm = np.linalg.norm(delta_vec)
 
-        # 打印第2和第3关节的变化（注意索引从0开始）
+        # 打印第2和第3关节的变化
         joint2_delta = delta_vec[1]
         joint3_delta = delta_vec[2]
         print(f"关节2变化: {joint2_delta:+.4f}, 关节3变化: {joint3_delta:+.4f}, 总delta: {delta_norm:.4f}")
-        if delta_norm > 50 and self.last_q_target is not None:
-            q_target = self.last_q_target
+
+        # 安全阈值（单位与关节角一致，度或弧度都可）
+        MAX_SINGLE_JOINT_DELTA = 20.0  # 单关节最大变化（度）
+        MAX_TOTAL_DELTA = 50.0  # 所有关节变化总量上限（度）
+
+        # 检查是否存在单关节跳变
+        too_large = np.any(np.abs(delta_vec) > MAX_SINGLE_JOINT_DELTA)
+        too_large_total = delta_norm > MAX_TOTAL_DELTA
+
+        if (too_large or too_large_total) and hasattr(self, "last_q_target") and self.last_q_target is not None:
+            print(f"⚠️ 检测到IK异常跳变: 单关节过大={too_large}, 总变化={delta_norm:.2f}，使用上一次稳定解。")
+            q_target = self.last_q_target.copy()
+        else:
+            # 更新last_q_target为当前解
+            self.last_q_target = q_target.copy()
 
         self.q_curr = q_target
-        self.last_q_target = q_target
 
         # TODO: This is sentitive to order of motor_names = q_target mapping
         for i, name in enumerate(self.motor_names):
