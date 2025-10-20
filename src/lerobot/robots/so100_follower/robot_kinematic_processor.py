@@ -269,6 +269,7 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
     motor_names: list[str]
     q_curr: np.ndarray | None = field(default=None, init=False, repr=False)
     initial_guess_current_joints: bool = True
+    last_q_target = None
 
     def action(self, action: RobotAction) -> RobotAction:
         x = action.pop("ee.x")
@@ -317,8 +318,11 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         joint2_delta = delta_vec[1]
         joint3_delta = delta_vec[2]
         print(f"关节2变化: {joint2_delta:+.4f}, 关节3变化: {joint3_delta:+.4f}, 总delta: {delta_norm:.4f}")
+        if delta_norm > 100 and self.last_q_target is not None:
+            q_target = self.last_q_target
 
         self.q_curr = q_target
+        self.last_q_target = q_target
 
         # TODO: This is sentitive to order of motor_names = q_target mapping
         for i, name in enumerate(self.motor_names):
