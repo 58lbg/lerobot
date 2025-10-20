@@ -312,6 +312,7 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         delta = np.linalg.norm(q_target - self.q_curr)
         if delta > 10:  # rad
             q_target = self.q_curr.copy()
+            print("delta:", delta)
 
         self.q_curr = q_target
 
