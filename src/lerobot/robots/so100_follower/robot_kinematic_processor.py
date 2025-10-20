@@ -327,7 +327,7 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         too_large = np.any(np.abs(delta_vec) > MAX_SINGLE_JOINT_DELTA)
         too_large_total = delta_norm > MAX_TOTAL_DELTA
 
-        if (too_large or too_large_total) and hasattr(self, "last_q_target") and self.last_q_target is not None:
+        if (too_large_total) and self.last_q_target is not None:
             print(f"⚠️ 检测到IK异常跳变: 单关节过大={too_large}, 总变化={delta_norm:.2f}，使用上一次稳定解。")
             q_target = self.last_q_target.copy()
         else:
