@@ -67,7 +67,7 @@ phone_to_robot_joints_processor = RobotProcessorPipeline[tuple[RobotAction, Robo
         MapPhoneActionToRobotAction(platform=teleop_config.phone_os),
         EEReferenceAndDelta(
             kinematics=kinematics_solver,
-            end_effector_step_sizes={"x": 0.5, "y": 0.5, "z": 0.5},
+            end_effector_step_sizes={"x": 0.8, "y": 0.8, "z": 0.8},
             motor_names=list(robot.bus.motors.keys()),
             use_latched_reference=True,
         ),
