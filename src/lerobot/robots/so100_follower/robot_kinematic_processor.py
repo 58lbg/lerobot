@@ -309,6 +309,15 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         # Compute inverse kinematics
         q_target = self.kinematics.inverse_kinematics(self.q_curr, t_des)
 
+        # 计算 delta
+        delta_vec = q_target - self.q_curr
+        delta_norm = np.linalg.norm(delta_vec)
+
+        # 打印第2和第3关节的变化（注意索引从0开始）
+        joint2_delta = delta_vec[1]
+        joint3_delta = delta_vec[2]
+        print(f"关节2变化: {joint2_delta:+.4f}, 关节3变化: {joint3_delta:+.4f}, 总delta: {delta_norm:.4f}")
+
         self.q_curr = q_target
 
         # TODO: This is sentitive to order of motor_names = q_target mapping
