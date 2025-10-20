@@ -320,7 +320,7 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         print(f"关节2变化: {joint2_delta:+.4f}, 关节3变化: {joint3_delta:+.4f}, 总delta: {delta_norm:.4f}")
 
         # 安全阈值（单位与关节角一致，度或弧度都可）
-        MAX_SINGLE_JOINT_DELTA = 20.0  # 单关节最大变化（度）
+        MAX_SINGLE_JOINT_DELTA = 40.0  # 单关节最大变化（度）
         MAX_TOTAL_DELTA = 50.0  # 所有关节变化总量上限（度）
 
         # 检查是否存在单关节跳变
