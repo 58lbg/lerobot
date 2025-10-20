@@ -73,7 +73,7 @@ phone_to_robot_joints_processor = RobotProcessorPipeline[tuple[RobotAction, Robo
         ),
         EEBoundsAndSafety(
             end_effector_bounds={"min": [-1.0, -1.0, -1.0], "max": [1.0, 1.0, 1.0]},
-            max_ee_step_m=0.10,
+            max_ee_step_m=0.20,
         ),
         GripperVelocityToJoint(
             speed_factor=20.0,
