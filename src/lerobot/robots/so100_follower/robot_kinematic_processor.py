@@ -310,8 +310,8 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
         q_target = self.kinematics.inverse_kinematics(self.q_curr, t_des)
 
         delta = np.linalg.norm(q_target - self.q_curr)
-        if delta > 0.3:  # rad
-            # q_target = self.q_curr.copy()  # 忽略异常解
+        if delta > 50:  # rad
+            q_target = self.q_curr.copy()  # 忽略异常解
             print("delta:", delta)
 
         self.q_curr = q_target
