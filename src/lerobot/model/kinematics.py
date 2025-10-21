@@ -42,6 +42,7 @@ class RobotKinematics:
 
         self.robot = placo.RobotWrapper(urdf_path)
         self.solver = placo.KinematicsSolver(self.robot)
+        self.solver.enable_velocity_limits(True)
         self.solver.mask_fbase(True)  # Fix the base
 
         self.target_frame_name = target_frame_name
