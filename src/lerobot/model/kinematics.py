@@ -45,11 +45,12 @@ class RobotKinematics:
         self.solver.dt = 0.033
         self.solver.mask_fbase(True)  # Fix the base
 
+        self.solver.enable_joint_limits(True)
         self.solver.enable_velocity_limits(True)
         # -------------------------------
         # 限制 2、3、4 号关节的最大速度
         # -------------------------------
-        MAX_VEL_DEG = 20.0
+        MAX_VEL_DEG = 60.0
         MAX_VEL_RAD = np.deg2rad(MAX_VEL_DEG)
         # 确保 joint_names 已经存在
         self.joint_names = list(self.robot.joint_names()) if joint_names is None else joint_names
@@ -57,9 +58,10 @@ class RobotKinematics:
         for idx in [1, 2, 3]:
             if idx < len(self.joint_names):
                 joint_name = self.joint_names[idx]
+                if idx == 2:
+                    self.robot.set_joint_limits(joint_name, -1.1515, 1.73)
                 # 这里调用 placo 的底层接口设置速度上限
                 self.robot.set_joint_velocity(joint_name, MAX_VEL_RAD)
-                print(f"⚙️ 限制 {joint_name} 速度 ≤ {MAX_VEL_DEG}°/s ({MAX_VEL_RAD:.3f} rad/s)")
 
         self.target_frame_name = target_frame_name
 
@@ -94,7 +96,7 @@ class RobotKinematics:
         return self.robot.get_T_world_frame(self.target_frame_name)
 
     def inverse_kinematics(
-        self, current_joint_pos, desired_ee_pose, position_weight=1.0, orientation_weight=0.01
+        self, current_joint_pos, desired_ee_pose, position_weight=1.0, orientation_weight=0.1
     ):
         """
         Compute inverse kinematics using placo solver.

@@ -77,6 +77,10 @@ class IOSPhone(BasePhone, Teleoperator):
         self.config = config
         self._group = None
 
+        self.cached_pose = None
+        self.cached_pos = None
+        self.cached_rot = None
+
     @property
     def is_connected(self) -> bool:
         return self._group is not None
@@ -153,16 +157,27 @@ class IOSPhone(BasePhone, Teleoperator):
             - The raw HEBI feedback object for accessing other data like button presses.
         """
         fbk = self._group.get_next_feedback()
+        if fbk is None:
+            if self.cached_pose:
+                return True, self.cached_pos, self.cached_rot, self.cached_pose
+            return False, None, None, None
         pose = fbk[0]
         ar_pos = getattr(pose, "ar_position", None)
         ar_quat = getattr(pose, "ar_orientation", None)
         if ar_pos is None or ar_quat is None:
+            if self.cached_pose:
+                return True, self.cached_pos, self.cached_rot, self.cached_pose
             return False, None, None, None
         # HEBI provides orientation in w, x, y, z format.
         # Scipy's Rotation expects x, y, z, w.
         quat_xyzw = np.concatenate((ar_quat[1:], [ar_quat[0]]))  # wxyz to xyzw
         rot = Rotation.from_quat(quat_xyzw)
         pos = ar_pos - rot.apply(self.config.camera_offset)
+
+        self.cached_pose = pose
+        self.cached_rot = rot
+        self.cached_pos = pos
+
         return True, pos, rot, pose
 
     def get_action(self) -> dict:
