@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import numpy as np
+from placo_utils.visualization import robot_viz
 
 
 class RobotKinematics:
@@ -71,6 +72,8 @@ class RobotKinematics:
         # Initialize frame task for IK
         self.tip_frame = self.solver.add_frame_task(self.target_frame_name, np.eye(4))
 
+        self.viz = robot_viz(self.robot)
+
     def forward_kinematics(self, joint_pos_deg):
         """
         Compute forward kinematics for given joint configuration given the target frame name in the constructor.
@@ -127,6 +130,9 @@ class RobotKinematics:
         # Solve IK
         self.solver.solve(True)
         self.robot.update_kinematics()
+
+        # Updating the viewer
+        self.viz.display(self.robot.state.q)
 
         # Extract joint positions
         joint_pos_rad = []
