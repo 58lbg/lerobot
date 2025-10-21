@@ -42,6 +42,7 @@ class RobotKinematics:
 
         self.robot = placo.RobotWrapper(urdf_path)
         self.solver = placo.KinematicsSolver(self.robot)
+        self.solver.dt = 0.033
         self.solver.mask_fbase(True)  # Fix the base
 
         self.solver.enable_velocity_limits(True)
