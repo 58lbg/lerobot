@@ -269,7 +269,6 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
     motor_names: list[str]
     q_curr: np.ndarray | None = field(default=None, init=False, repr=False)
     initial_guess_current_joints: bool = True
-    last_q_target = None
 
     def action(self, action: RobotAction) -> RobotAction:
         x = action.pop("ee.x")
@@ -309,79 +308,6 @@ class InverseKinematicsEEToJoints(RobotActionProcessorStep):
 
         # Compute inverse kinematics
         q_target = self.kinematics.inverse_kinematics(self.q_curr, t_des)
-
-        # 计算 delta
-        delta_vec = q_target - self.q_curr
-        delta_norm = np.linalg.norm(delta_vec)
-
-        # 打印第2和第3关节的变化
-        joint2_delta = delta_vec[1]
-        joint3_delta = delta_vec[2]
-        print(f"关节2变化: {joint2_delta:+.4f}, 关节3变化: {joint3_delta:+.4f}, 总delta: {delta_norm:.4f}")
-
-        # 安全阈值（单位与关节角一致，度或弧度都可）
-        MAX_SINGLE_JOINT_DELTA = 40.0  # 单关节最大变化
-        MAX_TOTAL_DELTA = 50.0  # 所有关节变化总量上限
-        MAX_ACCEPTABLE_DIFF = 20.0  # 扰动解与上次稳定解的最大容差
-
-        # 检查是否存在跳变
-        too_large = np.any(np.abs(delta_vec) > MAX_SINGLE_JOINT_DELTA)
-        too_large_total = delta_norm > MAX_TOTAL_DELTA
-
-        # --- 检测到跳变时，尝试微扰12次 ---
-        if (too_large or too_large_total) and self.last_q_target is not None:
-            print(f"⚠️ 检测到IK异常跳变: 单关节过大={too_large}, 总变化={delta_norm:.2f}，尝试修正解...")
-
-            # 保存候选解
-            candidates = []
-
-            # 定义微扰方向（±x, ±y, ±z, ±wx, ±wy, ±wz）
-            perturbations = [
-                (0.001, 0, 0, 0, 0, 0),
-                (-0.001, 0, 0, 0, 0, 0),
-                (0, 0.001, 0, 0, 0, 0),
-                (0, -0.001, 0, 0, 0, 0),
-                (0, 0, 0.001, 0, 0, 0),
-                (0, 0, -0.001, 0, 0, 0),
-                (0, 0, 0, 0.001, 0, 0),
-                (0, 0, 0, -0.001, 0, 0),
-                (0, 0, 0, 0, 0.001, 0),
-                (0, 0, 0, 0, -0.001, 0),
-                (0, 0, 0, 0, 0, 0.001),
-                (0, 0, 0, 0, 0, -0.001),
-            ]
-
-            for dx, dy, dz, dwx, dwy, dwz in perturbations:
-                t_test = np.eye(4, dtype=float)
-                # 添加扰动到位置
-                t_test[:3, 3] = [x + dx, y + dy, z + dz]
-                # 添加扰动到旋转
-                t_test[:3, :3] = Rotation.from_rotvec([wx + dwx, wy + dwy, wz + dwz]).as_matrix()
-                try:
-                    q_test = self.kinematics.inverse_kinematics(self.q_curr, t_test)
-                    diff = np.linalg.norm(q_test - self.last_q_target)
-                    candidates.append((diff, q_test))
-                except Exception as e:
-                    print(f"扰动解失败 ({dx:+.4f},{dy:+.4f},{dz:+.4f},{dwx:+.4f},{dwy:+.4f},{dwz:+.4f}): {e}")
-
-            # 选择最接近上一次解的候选
-            if len(candidates) > 0:
-                candidates.sort(key=lambda c: c[0])
-                best_diff, best_q = candidates[0]
-                if best_diff < MAX_ACCEPTABLE_DIFF:
-                    print(f"✅ 使用扰动结果（与上次解差={best_diff:.2f}）")
-                    q_target = best_q
-                else:
-                    print(f"⚠️ 扰动解与上次稳定解差距过大 ({best_diff:.2f} > {MAX_ACCEPTABLE_DIFF})，放弃，回退。")
-                    q_target = self.last_q_target.copy()
-            else:
-                print("⚠️ 所有扰动解失败，回退到上一次稳定解。")
-                q_target = self.last_q_target.copy()
-
-        # --- 更新 last_q_target ---
-        else:
-            self.last_q_target = q_target.copy()
-
         self.q_curr = q_target
 
         # TODO: This is sentitive to order of motor_names = q_target mapping
